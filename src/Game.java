@@ -19,6 +19,9 @@ public class Game {
     public int getEntityes() {
         return entityes;
     }
+    public String toString(){
+        return "Game String";
+    }
 
     public List<String> getStringList() {
         return stringList;
