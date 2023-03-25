@@ -5,29 +5,28 @@ public class User {
     private String name;
     private String email;
     private Integer score;
-    private String username;
     private String password;
+
+    private UserType role;
 
     public User() {
         this.name = "";
         this.email = "";
         this.score = 0;
-        this.username = "";
         this.password = "";
+        this.role = UserType.PLAYER;
     }
 
-    public User(String name, String email, Integer score, String username, String password) {
+    public User(String name, String email, Integer score, String password) {
         this.name = name;
         this.email = email;
         this.score = score;
-        this.username = username;
         this.password = password;
     }
 
-    public User(String name, String email, String username, String password) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
-        this.username = username;
         this.password = password;
         this.score = 0;
     }
@@ -56,12 +55,12 @@ public class User {
         this.score = score;
     }
 
-    public String getUsername() {
-        return username;
+    public UserType getRole() {
+        return role;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(UserType role) {
+        this.role = role;
     }
 
     public String getPassword() {
