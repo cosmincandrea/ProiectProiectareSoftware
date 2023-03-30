@@ -10,8 +10,8 @@ public class Main {
         User user = new User("Cosmin Candrea", "cosmin*candrea", 12,"parola");
         userDao.insertUser(user);
         */
-        GameState gameState = new GameState(3);
-        GameView gameView = new GameView();
-        gameView.drawGame(gameState);
+        GameState gameState = new GameState(5);
+        GameView gameView = new GameView(gameState);
+        gameView.drawGame();
     }
 }

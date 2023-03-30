@@ -1,29 +1,25 @@
 package Presenter;
 
 import models.GameState;
-import view.GameView;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GamePresenter implements KeyListener {
+public class KeyPresenter implements KeyListener {
 
-    GameState gamestate;
-    GameView gameView;
-
-    public GamePresenter(GameState gamestate, GameView gameView) {
-        this.gamestate = gamestate;
-        this.gameView = gameView;
+    GameState gameState;
+    public KeyPresenter(GameState gameState) {
+        this.gameState = gameState;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        System.out.println("Key T" + e.getKeyChar());
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        System.out.println("Key P" + e.getKeyChar());
     }
 
     @Override

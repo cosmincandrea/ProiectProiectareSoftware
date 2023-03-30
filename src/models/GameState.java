@@ -6,7 +6,9 @@ public class GameState {
     public int level;
     public int rabbitX, rabbitY;
     public int foodX, foodY;
+    public int score;
     public GameState(int level) {
+        this.score = 0;
         this.level = level;
         this.rabbitX = 0;
         this.rabbitY = this.level - 1;
