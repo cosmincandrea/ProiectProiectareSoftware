@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 
 public class ConnectionFactory {
     private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class.getName());
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DBURL = "jdbc:mysql://localhost:3306/users";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String DBURL = "jdbc:mysql://localhost:3306/game";
     private static final String USER = "root";
     private static final String PASS = "password";
 
