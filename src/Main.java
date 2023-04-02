@@ -1,3 +1,4 @@
+import Presenter.GamePresenter;
 import models.GameState;
 import models.User;
 import models.repo.UserDao;
@@ -10,8 +11,10 @@ public class Main {
         User user = new User("Cosmin Candrea", "cosmin*candrea", 12,"parola");
         userDao.insertUser(user);
         */
-        GameState gameState = new GameState(5);
-        GameView gameView = new GameView(gameState);
-        gameView.drawGame();
+//        GameState gameState = new GameState(5);
+//        GameView gameView = new GameView(gameState);
+//        gameView.drawGame();
+        GamePresenter gamePresenter = new GamePresenter();
+        gamePresenter.init();
     }
 }

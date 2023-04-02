@@ -11,14 +11,25 @@ public class GamePresenter implements KeyListener {
     GameState gamestate;
     GameView gameView;
 
-    public GamePresenter(GameState gamestate, GameView gameView) {
-        this.gamestate = gamestate;
-        this.gameView = gameView;
+    public GamePresenter() {
+        this.gamestate = new GameState(3);
+        this.gameView = new GameView(this.gamestate, this);
     }
+
+    public void init(){
+        gameView.startGame();
+        ///gameView.drawGame();
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        if (e.getKeyChar() == 's'){
+            gamestate.rabbitY = gamestate.rabbitY - 1;
+            System.out.println(gamestate.rabbitY);
+             gameView.drawGame();
+            System.out.println("Test");
+        }
     }
 
     @Override
