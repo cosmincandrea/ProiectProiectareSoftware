@@ -22,6 +22,9 @@ public class GameState {
         gameMatrix[1][1] = 2;
     }
 
+    public boolean isValidPosition(int x, int y){
+        return x >= 0 && x < this.level && y >= 0 && y < this.level;
+    }
     public boolean isWin(int newX, int newY){
         return newX == foodX && newY == foodY;
     }

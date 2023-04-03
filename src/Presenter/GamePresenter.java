@@ -24,12 +24,36 @@ public class GamePresenter implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+
+        int newX = gamestate.rabbitX;
+        int newY = gamestate.rabbitY;
+
         if (e.getKeyChar() == 's'){
-            gamestate.rabbitY = gamestate.rabbitY - 1;
-            System.out.println(gamestate.rabbitY);
-             gameView.drawGame();
-            System.out.println("Test");
+            newX = newX + 1;
+            newY = newY - 1;
         }
+        if (e.getKeyChar() == 'w') {
+            newX = newX - 1;
+            newY = newY - 1;
+        }
+        if (e.getKeyChar() == 'e'){
+            newX = newX - 1;
+            newY = newY + 1;
+        }
+        if (e.getKeyChar() == 'd') {
+            newX = newX + 1;
+            newY = newY + 1;
+        }
+
+        if (!gamestate.isValidPosition(newX, newY))
+            return;
+
+        gamestate.rabbitX = newX;
+        gamestate.rabbitY = newY;
+        gamestate.score++;
+//        if (gamestate.score > 5)
+//            gameView.closeGame();
+        gameView.drawGame();
     }
 
     @Override

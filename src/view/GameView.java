@@ -34,8 +34,12 @@ public class GameView {
         rows = new JLabel[gameState.level][gameState.level];  //change ui content by managing these now
 
         scorelabel = new JLabel("Score is 34");
+        scorePannel = new JPanel();
+        scorePannel.add(scorelabel);
+
         drawGame();
         mainPanel.add(gamePanel);
+        mainPanel.add(scorePannel);
 
         mainFrame.add(mainPanel);
         //frame.add(score);
@@ -48,6 +52,7 @@ public class GameView {
     public void drawGame(){
 
         gamePanel.removeAll();
+        scorelabel.setText("Score is "+gameState.score);
         for(int i=0;i<gameState.level;i++)
             for(int j=0;j<gameState.level;j++){
             ImageIcon rabbit = new ImageIcon("images/mice.png");
@@ -63,6 +68,9 @@ public class GameView {
         }
         gamePanel.revalidate();
 
+    }
+    public void closeGame(){
+        mainFrame.setVisible(false);
     }
 
 }
