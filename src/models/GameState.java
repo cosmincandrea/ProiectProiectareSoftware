@@ -19,7 +19,7 @@ public class GameState {
             {
                     gameMatrix[i][j] = 0;
             }
-        gameMatrix[1][1] = 2;
+        gameMatrix[1][1] = 1;
     }
 
     public boolean isValidPosition(int x, int y){

@@ -15,7 +15,7 @@ public class LoginView {
     private JLabel jcomp6;
     private JPanel mainPanel;
     LoginPresenter loginPresenter;
-
+    JFrame frame = new JFrame ("Log in");
     public LoginView(LoginPresenter loginPresenter) {
         //construct components
         loginBtn = new JButton ("Login");
@@ -47,16 +47,24 @@ public class LoginView {
             }
         });
 
+        registerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginPresenter.register();
+            }
+        });
+
         registerBtn.setBounds (290, 155, 100, 20);
         emailField.setBounds (205, 25, 230, 25);
         jcomp4.setBounds (105, 25, 100, 25);
         passwordField.setBounds (205, 70, 225, 25);
         jcomp6.setBounds (105, 70, 100, 25);
+
     }
 
 
     public void init () {
-        JFrame frame = new JFrame ("MyPanel");
+
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add (mainPanel);
         frame.pack();
@@ -67,7 +75,12 @@ public class LoginView {
         return emailField.getText();
     }
     public String getPassword(){
-        return passwordField.getPassword().toString();
+        return new String(passwordField.getPassword());
+    }
+
+    public void close(){
+        ///frame.removeAll();
+        frame.setVisible(false);
     }
 
 }

@@ -14,6 +14,7 @@ public class GameView {
     JPanel mainPanel;
     JPanel gamePanel;
     JPanel scorePannel;
+
     JLabel scorelabel;
     JLabel rows[][];
 
@@ -45,8 +46,6 @@ public class GameView {
         //frame.add(score);
         mainFrame.pack();
         mainFrame.setVisible(true);
-
-
     }
 
     public void drawGame(){
@@ -58,12 +57,14 @@ public class GameView {
             ImageIcon rabbit = new ImageIcon("images/mice.png");
             ImageIcon trap = new ImageIcon("images/trap.png");
             ImageIcon empty = new ImageIcon("images/empty.png");
+            ImageIcon food = new ImageIcon("images/food.png");
             if (gameState.rabbitY == j && gameState.rabbitX == i)
                 rows[i][j] = new JLabel(rabbit);
-            else if (gameState.gameMatrix[i][j] == 2)
+            else if (gameState.gameMatrix[i][j] == 1)
                 rows[i][j] = new JLabel(trap);
-            else
-                rows[i][j] = new JLabel(empty);
+            else if (gameState.isWin(i, j))
+                rows[i][j] = new JLabel(food);
+            else rows[i][j] = new JLabel(empty);
             gamePanel.add(rows[i][j]);
         }
         gamePanel.revalidate();
