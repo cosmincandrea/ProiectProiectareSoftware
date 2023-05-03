@@ -10,19 +10,6 @@ import view.MainView;
 
 public class Main {
     public static void main(String[] args) {
-
-//        UserDao userDao = new UserDao();
-//        User user = new User("Cosminn", "TE",15, "parola");
-//        user.setRole(UserType.ADMIN);
-//        userDao.updateUser(user);
-        //        GameState gameState = new GameState(5);
-//        GameView gameView = new GameView(gameState);
-//        gameView.drawGame();
-//        GamePresenter gamePresenter = new GamePresenter();
-//        gamePresenter.init();
-//        MainView mainView = new MainView();
-//        mainView.init();
-        //LoginPresenter loginPresenter = new LoginPresenter();
         MainPresenter mainPresenter = new MainPresenter();
         mainPresenter.start();
 

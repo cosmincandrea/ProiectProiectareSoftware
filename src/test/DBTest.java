@@ -2,6 +2,7 @@ package test;
 
 import junit.framework.Assert;
 import models.User;
+import models.UserType;
 import models.repo.ConnectionFactory;
 import models.repo.UserDao;
 import org.junit.After;
@@ -25,6 +26,7 @@ public class DBTest {
         connectionFactory = ConnectionFactory.getConnection();
         userDao = new UserDao();
         user1 = new User("Cosmin1", "emial1", 45, "pass1");
+        user1.setRole(UserType.PLAYER);
         user2 = new User("No", "No", 44, "no");
         user3 = new User();
     }
