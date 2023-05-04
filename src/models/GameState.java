@@ -13,13 +13,18 @@ public class GameState {
         this.rabbitX = 0;
         this.rabbitY = this.level - 1;
         this.foodX = this.level - 1;
-        this.foodY = this.level - 1;
+        this.foodY = 0;
         for (int i = 0; i < this.level; i++)
             for (int j = 0; j < this.level; j++)
             {
                     gameMatrix[i][j] = 0;
             }
         gameMatrix[1][1] = 1;
+        gameMatrix[2][3] = 1;
+        gameMatrix[5][6] = 1;
+        gameMatrix[2][4] = 1;
+        gameMatrix[2][5] = 1;
+        gameMatrix[2][6] = 1;
     }
 
     public boolean isValidPosition(int x, int y){

@@ -1,6 +1,6 @@
 package view;
 
-import Presenter.MainPresenter;
+import ViewModel.MainVM;
 import models.User;
 
 import javax.swing.*;
@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainView {
-    MainPresenter mainPresenter;
+    MainVM mainVM;
     private JButton btnPlay;
     private JLabel labelUserGreet;
     private JButton btnCRUD;
@@ -19,9 +19,9 @@ public class MainView {
     private JComboBox comboLevel;
     private JLabel jcomp5;
 
-    public MainView(MainPresenter mainPresenter) {
+    public MainView(MainVM mainVM) {
         //construct components
-        String[] comboLevelItems = {"3", "4", "5"};
+        String[] comboLevelItems = {"5", "6", "7", "8", "9", "10"};
 
         mainPanel = new JPanel();
         frame = new JFrame();
@@ -33,7 +33,7 @@ public class MainView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int level = Integer.parseInt(comboLevel.getSelectedItem().toString());
-                mainPresenter.play(level);
+                mainVM.play(level);
             }
         });
 
@@ -42,7 +42,7 @@ public class MainView {
         btnCRUD = new JButton ("CRUD ON USERS");
 
 
-        this.mainPresenter = mainPresenter;
+        this.mainVM = mainVM;
 
         //adjust size and set layout
         mainPanel.setPreferredSize (new Dimension(944, 563));
@@ -51,7 +51,7 @@ public class MainView {
         btnCRUD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPresenter.startCRUDoperations();
+                mainVM.startCRUDoperations();
             }
         });
 

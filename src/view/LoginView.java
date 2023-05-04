@@ -1,22 +1,28 @@
 package view;
-import Presenter.LoginPresenter;
+import ViewModel.LoginVM;
 
+import net.sds.mvvm.bindings.Bind;
+import net.sds.mvvm.bindings.Binder;
+import net.sds.mvvm.bindings.BindingType;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class LoginView {
+
+    @Bind(value = "text", target = "usernameTf.value", type = BindingType.BI_DIRECTIONAL)
+    private JTextField emailField;
+    @Bind(value = "text", target = "passwordTf.value", type = BindingType.BI_DIRECTIONAL)
+    private JPasswordField passwordField;
+
     private JButton loginBtn;
     private JButton registerBtn;
-    private JTextField emailField;
     private JLabel jcomp4;
-    private JPasswordField passwordField;
     private JLabel jcomp6;
     private JPanel mainPanel;
-    LoginPresenter loginPresenter;
+    LoginVM loginVM;
     JFrame frame = new JFrame ("Log in");
-    public LoginView(LoginPresenter loginPresenter) {
+    public LoginView(LoginVM loginVM) {
         //construct components
         loginBtn = new JButton ("Login");
         registerBtn = new JButton ("Register");
@@ -24,7 +30,12 @@ public class LoginView {
         jcomp4 = new JLabel ("Email");
         passwordField = new JPasswordField (5);
         jcomp6 = new JLabel ("Password");
-        this.loginPresenter = loginPresenter;
+        this.loginVM = loginVM;
+        try {
+            Binder.bind(this, loginVM);
+        } catch (Exception E) {
+            E.printStackTrace();
+        }
         //adjust size and set layout
         mainPanel = new JPanel();
         mainPanel.setPreferredSize (new Dimension (944, 563));
@@ -43,14 +54,14 @@ public class LoginView {
         loginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginPresenter.logIn();
+                loginVM.logIn();
             }
         });
 
         registerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginPresenter.register();
+                loginVM.register();
             }
         });
 

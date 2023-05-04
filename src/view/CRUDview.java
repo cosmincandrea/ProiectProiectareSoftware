@@ -1,6 +1,6 @@
 package view;
 
-import Presenter.CRUDPresenter;
+import ViewModel.CRUDVM;
 import models.User;
 import models.UserType;
 
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class CRUDview {
 
-    CRUDPresenter crudPresenter;
+    CRUDVM CRUDVM;
     private JButton btnRefresh;
     private JButton btnInsert;
     private JButton btnDelete;
@@ -32,11 +32,11 @@ public class CRUDview {
     JFrame frame;
     JPanel mainPanel;
 
-    public CRUDview(CRUDPresenter crudPresenter) {
+    public CRUDview(CRUDVM CRUDVM) {
         //construct preComponents
         //String[] jcomp4Items = {"Item 1", "Item 2", "Item 3"};
 
-        this.crudPresenter = crudPresenter;
+        this.CRUDVM = CRUDVM;
         frame = new JFrame("CRUD Operations");
         mainPanel = new JPanel();
 
@@ -97,7 +97,7 @@ public class CRUDview {
                 user.setName(name);
                 user.setEmail(email);
                 user.setScore(score);
-                crudPresenter.deleteUser(user);
+                CRUDVM.deleteUser(user);
             }
         });
 
@@ -120,7 +120,7 @@ public class CRUDview {
                 user.setName(name);
                 user.setEmail(email);
                 user.setScore(score);
-                crudPresenter.updateUser(user);
+                CRUDVM.updateUser(user);
             }
         });
 
@@ -128,7 +128,7 @@ public class CRUDview {
         btnRefresh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                crudPresenter.refresh();
+                CRUDVM.refresh();
             }
         });
 
@@ -150,7 +150,7 @@ public class CRUDview {
                 user.setName(name);
                 user.setEmail(email);
                 user.setScore(score);
-                crudPresenter.insertUser(user);
+                CRUDVM.insertUser(user);
             }
         });
 

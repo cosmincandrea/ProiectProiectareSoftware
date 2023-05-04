@@ -1,28 +1,31 @@
-package Presenter;
+package ViewModel;
 
+import models.GameModel;
 import models.GameState;
-import models.User;
 import models.repo.UserDao;
 import view.GameView;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GamePresenter implements KeyListener {
+public class GameVM implements KeyListener {
 
-    GameState gamestate;
+    GameModel gamemodel;
     GameView gameView;
-    MainPresenter mainPresenter;
+    MainVM mainVM;
     UserDao userDao;
+    boolean fin = false;
 
-    public GamePresenter(MainPresenter mainPresenter) {
-        this.mainPresenter = mainPresenter;
+    public GameVM(MainVM mainVM) {
+        this.mainVM = mainVM;
         this.userDao = new UserDao();
     }
 
     public void init(int lvl){
-        this.gamestate = new GameState(lvl);
-        this.gameView = new GameView(this.gamestate, this);
+        fin = false;
+        this.gamemodel = new GameModel();
+        gamemodel.newGame(lvl);
+        this.gameView = new GameView(this.gamemodel, this);
         gameView.startGame();
     }
 
@@ -30,6 +33,7 @@ public class GamePresenter implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
+        GameState gamestate = gamemodel.gamestate;
         int newX = gamestate.rabbitX;
         int newY = gamestate.rabbitY;
 
@@ -49,17 +53,31 @@ public class GamePresenter implements KeyListener {
             newX = newX + 1;
             newY = newY + 1;
         }
+        if (e.getKeyChar() == 'x'){
+            gameView.closeGame();
+            return;
+        }
 
         int event = checkEvent(newX, newY);
         if (event == 1){
+            fin = true;
             gameView.closeGame();
         }
         if (event == 2){
-            gameView.closeGame();
-            mainPresenter.currentUser.setScore(gamestate.score);
-            System.out.println(mainPresenter.currentUser);
-            mainPresenter.updateGreeting();
-            userDao.updateUser(mainPresenter.currentUser);
+            fin = true;
+            int len =  gamemodel.getShortestPath();
+            if (gamestate.score <= len) {
+                gameView.drawGame(gamestate.level);
+                gameView.setVWinLabel();
+                gamestate.score = len;
+            }
+            else
+                gameView.showPath(gamestate.level);
+
+            int finalScore = (len * 100) / gamestate.score;
+            mainVM.currentUser.setScore(finalScore);
+            mainVM.updateGreeting();
+            userDao.updateUser(mainVM.currentUser);
         }
 
         if (!gamestate.isValidPosition(newX, newY))
@@ -70,7 +88,8 @@ public class GamePresenter implements KeyListener {
         gamestate.score++;
 //        if (gamestate.score > 5)
 //            gameView.closeGame();
-        gameView.drawGame();
+        if (!fin)
+            gameView.drawGame(gamestate.level);
     }
 
     @Override
@@ -84,11 +103,11 @@ public class GamePresenter implements KeyListener {
     }
 
     private int checkEvent(int x, int y){
-        if (!gamestate.isValidPosition(x, y))
+        if (!gamemodel.isValidPosition(x, y))
             return 0;
-        if (gamestate.isTrap(x, y))
+        if (gamemodel.isTrap(x, y))
             return 1;
-        if (gamestate.isWin(x, y))
+        if (gamemodel.isWin(x, y))
             return 2;
        return 0;
     }

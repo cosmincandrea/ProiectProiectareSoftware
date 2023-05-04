@@ -1,4 +1,4 @@
-package Presenter;
+package ViewModel;
 
 import models.User;
 import models.repo.UserDao;
@@ -6,13 +6,13 @@ import view.CRUDview;
 
 import java.util.List;
 
-public class CRUDPresenter {
-    private MainPresenter mainPresenter;
+public class CRUDVM {
+    private MainVM mainVM;
     private CRUDview crudView;
     private UserDao userDao;
 
-    public CRUDPresenter(MainPresenter mainPresenter) {
-        this.mainPresenter = mainPresenter;
+    public CRUDVM(MainVM mainVM) {
+        this.mainVM = mainVM;
         this.crudView = new CRUDview(this);
         this.userDao = new UserDao();
     }
