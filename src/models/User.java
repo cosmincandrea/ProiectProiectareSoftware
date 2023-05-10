@@ -75,4 +75,10 @@ public class User {
         return this.name + " -> " + this.score;
     }
 
+    public boolean equals(Object o){
+        if (o instanceof User)
+            return this.email.equals(((User) o).email);
+        return false;
+    }
+
 }

@@ -1,12 +1,10 @@
-import models.User;
-import models.repo.UserDao;
+import ViewModel.MainVM;
+import view.LoginView;
 
 public class Main {
     public static void main(String[] args) {
-
-        UserDao userDao = new UserDao();
-        User user = new User("Cosmin Candrea", "cosmin*candrea", 12,"parola");
-        userDao.insertUser(user);
+        MainVM mainVM = new MainVM();
+        mainVM.start();
 
     }
 }
