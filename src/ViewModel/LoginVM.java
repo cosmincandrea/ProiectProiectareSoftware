@@ -10,23 +10,6 @@ import view.LoginView;
 
 public class LoginVM {
 
-    private Property<String> usernameTf;
-    private Property<String> passwordTf;
-    public CommandInterface commandInterface;
-
-    public LoginVM(){
-        usernameTf = PropertyFactory.createProperty("username", this, String.class);
-        passwordTf = PropertyFactory.createProperty("password", this, String.class);
-        this.commandInterface = new LoginComand(this);
-    }
-    public String getUsername(){
-        return usernameTf.get();
-    }
-    public String getPassword(){
-        return passwordTf.get();
-    }
-
-
     User currentUser;
     UserDao userDao;
     LoginView loginView;

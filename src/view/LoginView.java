@@ -10,9 +10,7 @@ import javax.swing.*;
 
 public class LoginView {
 
-    @Bind(value = "text", target = "usernameTf.value", type = BindingType.BI_DIRECTIONAL)
     private JTextField emailField;
-    @Bind(value = "text", target = "passwordTf.value", type = BindingType.BI_DIRECTIONAL)
     private JPasswordField passwordField;
 
     private JButton loginBtn;
