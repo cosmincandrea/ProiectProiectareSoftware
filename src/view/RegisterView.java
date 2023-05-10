@@ -1,6 +1,6 @@
 package view;
 
-import ViewModel.RegisterVM;
+import Controller.RegisterController;
 import models.UserType;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ public class RegisterView {
     private JTextField fldPassword;
     private JLabel jcomp6;
     private JTextField fldName;
-    private RegisterVM registerVM;
+    private RegisterController registerController;
 
     private JLabel jcomp8;
     private JTextField fldRole;
@@ -24,8 +24,8 @@ public class RegisterView {
     JFrame frame;
     JPanel mainPanel;
 
-    public RegisterView(RegisterVM registerVM) {
-        this.registerVM = registerVM;
+    public RegisterView(RegisterController registerController) {
+        this.registerController = registerController;
         frame = new JFrame("Register");
         mainPanel = new JPanel();
         //construct components
@@ -70,8 +70,8 @@ public class RegisterView {
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (registerVM.checkEmail(fldEmail.getText())){
-                    registerVM.addUser();
+                if (registerController.checkEmail(fldEmail.getText())){
+                    registerController.addUser();
                 }
             }
         });

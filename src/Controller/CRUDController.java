@@ -1,4 +1,4 @@
-package ViewModel;
+package Controller;
 
 import models.User;
 import models.repo.UserDao;
@@ -6,12 +6,12 @@ import view.CRUDview;
 
 import java.util.List;
 
-public class CRUDVM {
-    private MainVM mainVM;
+public class CRUDController {
+    private MainController mainVM;
     private CRUDview crudView;
     private UserDao userDao;
 
-    public CRUDVM(MainVM mainVM) {
+    public CRUDController(MainController mainVM) {
         this.mainVM = mainVM;
         this.crudView = new CRUDview(this);
         this.userDao = new UserDao();

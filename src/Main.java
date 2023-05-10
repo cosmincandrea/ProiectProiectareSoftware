@@ -1,10 +1,8 @@
-import ViewModel.MainVM;
-import view.LoginView;
+import Controller.MainController;
 
 public class Main {
     public static void main(String[] args) {
-        MainVM mainVM = new MainVM();
+        MainController mainVM = new MainController();
         mainVM.start();
-
     }
 }

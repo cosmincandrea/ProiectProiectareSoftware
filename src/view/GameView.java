@@ -1,6 +1,6 @@
 package view;
 
-import ViewModel.GameVM;
+import Controller.GameController;
 import models.GameModel;
 import models.GameState;
 
@@ -11,7 +11,7 @@ public class GameView {
 
     GameState gameState;
     GameModel gameModel;
-    GameVM gameVM;
+    GameController gameController;
     JFrame mainFrame;
     JPanel mainPanel;
     JPanel gamePanel;
@@ -20,16 +20,16 @@ public class GameView {
     JLabel scorelabel;
     JLabel rows[][];
 
-    public GameView(GameModel gameModel, GameVM gameVM) {
+    public GameView(GameModel gameModel, GameController gameController) {
         this.gameModel = gameModel;
         this.gameState = gameModel.gamestate;
-        this.gameVM = gameVM;
+        this.gameController = gameController;
     }
 
     public void startGame(){
         mainFrame = new JFrame();
         mainFrame.setFocusable(true);
-        mainFrame.addKeyListener(this.gameVM);
+        mainFrame.addKeyListener(this.gameController);
 
         mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));

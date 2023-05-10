@@ -1,4 +1,4 @@
-package ViewModel;
+package Controller;
 
 import models.GameModel;
 import models.GameState;
@@ -8,15 +8,15 @@ import view.GameView;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class GameVM implements KeyListener {
+public class GameController implements KeyListener {
 
     GameModel gamemodel;
     GameView gameView;
-    MainVM mainVM;
+    MainController mainVM;
     UserDao userDao;
     boolean fin = false;
 
-    public GameVM(MainVM mainVM) {
+    public GameController(MainController mainVM) {
         this.mainVM = mainVM;
         this.userDao = new UserDao();
     }

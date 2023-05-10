@@ -1,15 +1,15 @@
-package ViewModel;
+package Controller;
 
 import models.User;
 import models.repo.UserDao;
 import view.RegisterView;
 
-public class RegisterVM {
+public class RegisterController {
     private RegisterView registerView;
-    private MainVM mainVM;
+    private MainController mainController;
     private UserDao userDao;
-    public RegisterVM(MainVM mainVM) {
-        this.mainVM = mainVM;
+    public RegisterController(MainController mainVM) {
+        this.mainController = mainVM;
         registerView = new RegisterView(this);
         userDao = new UserDao();
     }
@@ -34,7 +34,7 @@ public class RegisterVM {
         user.setPassword(registerView.getPassword());
         user.setScore(0);
         userDao.insertUser(user);
-        mainVM.registerDone();
+        mainController.registerDone();
     }
 
 }

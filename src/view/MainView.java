@@ -1,6 +1,6 @@
 package view;
 
-import ViewModel.MainVM;
+import Controller.MainController;
 import models.User;
 
 import javax.swing.*;
@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainView {
-    MainVM mainVM;
+    MainController mainVM;
     private JButton btnPlay;
     private JLabel labelUserGreet;
     private JButton btnCRUD;
@@ -18,8 +18,9 @@ public class MainView {
     private JFrame frame;
     private JComboBox comboLevel;
     private JLabel jcomp5;
+    private JButton btnReport;
 
-    public MainView(MainVM mainVM) {
+    public MainView(MainController mainVM) {
         //construct components
         String[] comboLevelItems = {"5", "6", "7", "8", "9", "10"};
 
@@ -28,6 +29,7 @@ public class MainView {
         btnPlay = new JButton ("PlayGame");
         comboLevel = new JComboBox (comboLevelItems);
         jcomp5 = new JLabel("Level");
+        btnReport = new JButton ("Show Graph");
 
         btnPlay.addActionListener(new ActionListener() {
             @Override
@@ -37,6 +39,12 @@ public class MainView {
             }
         });
 
+        btnReport.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         labelUserGreet = new JLabel ("Hello Cosmin, welcome back");
         btnCRUD = new JButton ("CRUD ON USERS");
@@ -61,6 +69,7 @@ public class MainView {
         mainPanel.add (labelUserGreet);
         mainPanel.add (btnCRUD);
         mainPanel.add(jcomp5);
+        mainPanel.add(btnReport);
 
 
         //set component bounds (only needed by Absolute Positioning)
@@ -69,6 +78,7 @@ public class MainView {
         labelUserGreet.setBounds (60, 0, 500, 150);
         btnCRUD.setBounds (55, 170, 170, 30);
         jcomp5.setBounds (275, 110, 100, 25);
+        btnReport.setBounds(50, 245, 175, 30);
     }
 
 

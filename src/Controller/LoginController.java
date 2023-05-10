@@ -1,21 +1,17 @@
-package ViewModel;
+package Controller;
 
-import ViewModel.commands.CommandInterface;
-import ViewModel.commands.LoginComand;
 import models.User;
 import models.repo.UserDao;
-import net.sds.mvvm.properties.Property;
-import net.sds.mvvm.properties.PropertyFactory;
 import view.LoginView;
 
-public class LoginVM {
+public class LoginController {
 
     User currentUser;
     UserDao userDao;
     LoginView loginView;
-    MainVM mainVM;
+    MainController mainVM;
 
-    public LoginVM(User user, MainVM mainVM) {
+    public LoginController(User user, MainController mainVM) {
         this.currentUser = user;
         this.mainVM = mainVM;
         this.userDao = new UserDao();

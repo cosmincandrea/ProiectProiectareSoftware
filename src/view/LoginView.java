@@ -1,9 +1,8 @@
 package view;
-import ViewModel.LoginVM;
+import Controller.LoginController;
 
-import net.sds.mvvm.bindings.Bind;
 import net.sds.mvvm.bindings.Binder;
-import net.sds.mvvm.bindings.BindingType;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -18,9 +17,9 @@ public class LoginView {
     private JLabel jcomp4;
     private JLabel jcomp6;
     private JPanel mainPanel;
-    LoginVM loginVM;
+    LoginController loginController;
     JFrame frame = new JFrame ("Log in");
-    public LoginView(LoginVM loginVM) {
+    public LoginView(LoginController loginController) {
         //construct components
         loginBtn = new JButton ("Login");
         registerBtn = new JButton ("Register");
@@ -28,9 +27,9 @@ public class LoginView {
         jcomp4 = new JLabel ("Email");
         passwordField = new JPasswordField (5);
         jcomp6 = new JLabel ("Password");
-        this.loginVM = loginVM;
+        this.loginController = loginController;
         try {
-            Binder.bind(this, loginVM);
+            Binder.bind(this, loginController);
         } catch (Exception E) {
             E.printStackTrace();
         }
@@ -52,14 +51,14 @@ public class LoginView {
         loginBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginVM.logIn();
+                loginController.logIn();
             }
         });
 
         registerBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginVM.register();
+                loginController.register();
             }
         });
 
