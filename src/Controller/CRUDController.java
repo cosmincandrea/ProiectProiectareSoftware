@@ -7,7 +7,7 @@ import view.CRUDview;
 import java.util.List;
 
 public class CRUDController {
-    private MainController mainVM;
+    public MainController mainVM;
     private CRUDview crudView;
     private UserDao userDao;
 

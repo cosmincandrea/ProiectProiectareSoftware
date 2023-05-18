@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class RegisterView {
     private JButton btnRegister;
@@ -79,6 +81,7 @@ public class RegisterView {
         frame.getContentPane().add (mainPanel);
         frame.pack();
         frame.setVisible (true);
+        changeLanguage(registerController.mainController.lang);
     }
 
     public String getEmail(){
@@ -97,6 +100,17 @@ public class RegisterView {
     }
     public void close(){
         frame.setVisible(false);
+    }
+    public void changeLanguage(String lang){
+        if (lang != null){
+            Locale locale = new Locale(lang.toLowerCase());
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("newResourceBundle", locale);
+            //System.out.println(resourceBundle.getString("playBtn"));
+            btnRegister.setText(resourceBundle.getString("registerBtn"));
+            jcomp4.setText(resourceBundle.getString("passwordField"));
+            jcomp6.setText(resourceBundle.getString("nameField"));
+            jcomp8.setText(resourceBundle.getString("roleField"));
+        }
     }
 
 }

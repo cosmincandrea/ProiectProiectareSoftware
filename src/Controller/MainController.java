@@ -7,6 +7,7 @@ import view.MainView;
 public class MainController {
 
     private MainView mainView;
+    public String lang;
     private GameController gameController;
     private LoginController loginController;
     private RegisterController registerController;
@@ -49,7 +50,7 @@ public class MainController {
     }
 
     public void play(int level){
-        gameController.init(level);
+        gameController.init(level, lang);
     }
     public void updateGreeting(){
         mainView.setGreeting(currentUser);

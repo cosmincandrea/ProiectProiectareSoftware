@@ -12,7 +12,8 @@ public class GameController implements KeyListener {
 
     GameModel gamemodel;
     GameView gameView;
-    MainController mainVM;
+    public String lang;
+    public MainController mainVM;
     UserDao userDao;
     boolean fin = false;
 
@@ -21,8 +22,9 @@ public class GameController implements KeyListener {
         this.userDao = new UserDao();
     }
 
-    public void init(int lvl){
+    public void init(int lvl, String lang){
         fin = false;
+        this.lang = lang;
         this.gamemodel = new GameModel();
         gamemodel.newGame(lvl);
         this.gameView = new GameView(this.gamemodel, this);
@@ -68,7 +70,7 @@ public class GameController implements KeyListener {
             int len =  gamemodel.getShortestPath();
             if (gamestate.score <= len) {
                 gameView.drawGame(gamestate.level);
-                gameView.setVWinLabel();
+                gameView.setVWinLabel(true, mainVM.lang);
                 gamestate.score = len;
             }
             else

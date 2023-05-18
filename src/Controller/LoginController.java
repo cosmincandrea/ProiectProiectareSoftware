@@ -9,7 +9,7 @@ public class LoginController {
     User currentUser;
     UserDao userDao;
     LoginView loginView;
-    MainController mainVM;
+    public MainController mainVM;
 
     public LoginController(User user, MainController mainVM) {
         this.currentUser = user;

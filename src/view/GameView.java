@@ -6,6 +6,8 @@ import models.GameState;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class GameView {
 
@@ -55,7 +57,7 @@ public class GameView {
 
         int iconSize = 500 / size;
         gamePanel.removeAll();
-        scorelabel.setText("Score is "+gameState.score);
+        scorelabel.setText("Score : "+gameState.score);
         for(int i=0;i<gameState.level;i++)
             for(int j=0;j<gameState.level;j++){
             ImageIcon rabbit = new ImageIcon("images/mice.png");
@@ -87,7 +89,7 @@ public class GameView {
         mainFrame.setVisible(true);
         int iconSize = 500 / size;
         gamePanel.removeAll();
-        scorelabel.setText("TOO LONG! This is the correct path");
+        setVWinLabel(false, gameController.mainVM.lang);
         for(int i=0;i<gameState.level;i++)
             for(int j=0;j<gameState.level;j++){
                 ImageIcon rabbit = new ImageIcon("images/mice.png");
@@ -121,8 +123,13 @@ public class GameView {
     public void closeGame(){
         mainFrame.setVisible(false);
     }
-    public void setVWinLabel(){
-        scorelabel.setText("BRAVO! You found the shorthest path");
+    public void setVWinLabel(boolean isWin, String lang){
+        Locale locale = new Locale(lang.toLowerCase());
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("newResourceBundle", locale);
+        if (isWin)
+            scorelabel.setText(resourceBundle.getString("succes"));
+        else
+            scorelabel.setText(resourceBundle.getString("fail"));
     }
 
 }

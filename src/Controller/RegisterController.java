@@ -6,7 +6,7 @@ import view.RegisterView;
 
 public class RegisterController {
     private RegisterView registerView;
-    private MainController mainController;
+    public MainController mainController;
     private UserDao userDao;
     public RegisterController(MainController mainVM) {
         this.mainController = mainVM;

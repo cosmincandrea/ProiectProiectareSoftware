@@ -9,6 +9,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class CRUDview {
 
@@ -183,5 +185,23 @@ public class CRUDview {
         frame.getContentPane().add (mainPanel);
         frame.pack();
         frame.setVisible (true);
+        changeLanguage(this.CRUDController.mainVM.lang);
     }
+
+    public void changeLanguage(String lang){
+        if (lang != null){
+            Locale locale = new Locale(lang.toLowerCase());
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("newResourceBundle", locale);
+            //System.out.println(resourceBundle.getString("playBtn"));
+            btnUpdate.setText(resourceBundle.getString("updateBtn"));
+            btnDelete.setText(resourceBundle.getString("deleteBtn"));
+            btnInsert.setText(resourceBundle.getString("insertBtn"));
+            btnRefresh.setText(resourceBundle.getString("refreshBtn"));
+            jcomp5.setText(resourceBundle.getString("nameField"));
+            jcomp12.setText(resourceBundle.getString("passwordField"));
+            jcomp14.setText(resourceBundle.getString("roleField"));
+
+        }
+    }
+
 }
